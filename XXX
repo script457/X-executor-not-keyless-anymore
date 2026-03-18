@@ -1,0 +1,184 @@
+-- X EXECUTOR (NEON + KEY SYSTEM)
+
+local TweenService = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+local KEY = "XXX"
+
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "Xexecutor"
+
+-- KEY UI
+local keyFrame = Instance.new("Frame", gui)
+keyFrame.Size = UDim2.new(0.3,0,0.25,0)
+keyFrame.Position = UDim2.new(0.35,0,0.35,0)
+keyFrame.BackgroundColor3 = Color3.fromRGB(10,10,10)
+Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0,15)
+
+local stroke = Instance.new("UIStroke", keyFrame)
+stroke.Color = Color3.fromRGB(0,255,255)
+
+local title = Instance.new("TextLabel", keyFrame)
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "Enter Key"
+title.TextColor3 = Color3.fromRGB(0,255,255)
+title.BackgroundTransparency = 1
+title.TextScaled = true
+
+local keyBox = Instance.new("TextBox", keyFrame)
+keyBox.Size = UDim2.new(0.8,0,0,40)
+keyBox.Position = UDim2.new(0.1,0,0.4,0)
+keyBox.PlaceholderText = "Enter key..."
+keyBox.BackgroundColor3 = Color3.fromRGB(20,20,20)
+keyBox.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", keyBox)
+
+local submit = Instance.new("TextButton", keyFrame)
+submit.Size = UDim2.new(0.5,0,0,40)
+submit.Position = UDim2.new(0.25,0,0.7,0)
+submit.Text = "Unlock"
+submit.BackgroundColor3 = Color3.fromRGB(0,0,0)
+submit.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", submit)
+
+-- MAIN HUB (hidden first)
+local hub = Instance.new("Frame", gui)
+hub.Size = UDim2.new(0.6,0,0.6,0)
+hub.Position = UDim2.new(0.2,0,1,400)
+hub.Visible = false
+hub.BackgroundColor3 = Color3.fromRGB(10,10,10)
+Instance.new("UICorner", hub).CornerRadius = UDim.new(0,20)
+
+local hubStroke = Instance.new("UIStroke", hub)
+hubStroke.Color = Color3.fromRGB(0,255,255)
+
+-- TITLE
+local hubTitle = Instance.new("TextLabel", hub)
+hubTitle.Size = UDim2.new(1,0,0,40)
+hubTitle.Text = "X executor"
+hubTitle.TextColor3 = Color3.fromRGB(0,255,255)
+hubTitle.BackgroundTransparency = 1
+hubTitle.TextScaled = true
+
+-- PARTICLES
+local emitter = Instance.new("ParticleEmitter", hub)
+emitter.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+emitter.Rate = 0
+
+local function burst()
+	for i=1,4 do
+		emitter:Emit(50)
+		task.wait(0.05)
+	end
+end
+
+-- TEXTBOX
+local box = Instance.new("TextBox", hub)
+box.Size = UDim2.new(0.9,0,0.5,0)
+box.Position = UDim2.new(0.05,0,0.15,0)
+box.Text = "print('hello world..')"
+box.BackgroundColor3 = Color3.fromRGB(20,20,20)
+box.TextColor3 = Color3.fromRGB(0,255,255)
+box.MultiLine = true
+Instance.new("UICorner", box)
+
+-- EXECUTE
+local exec = Instance.new("TextButton", hub)
+exec.Size = UDim2.new(0.4,0,0,45)
+exec.Position = UDim2.new(0.05,0,0.68,0)
+exec.Text = "Execute"
+exec.BackgroundColor3 = Color3.fromRGB(0,0,0)
+exec.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", exec)
+
+-- CLEAR
+local clear = Instance.new("TextButton", hub)
+clear.Size = UDim2.new(0.4,0,0,45)
+clear.Position = UDim2.new(0.55,0,0.68,0)
+clear.Text = "Clear"
+clear.BackgroundColor3 = Color3.fromRGB(0,0,0)
+clear.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", clear)
+
+-- SEARCH BUTTON
+local searchBtn = Instance.new("TextButton", hub)
+searchBtn.Size = UDim2.new(0.9,0,0,40)
+searchBtn.Position = UDim2.new(0.05,0,0.85,0)
+searchBtn.Text = "Search Scripts"
+searchBtn.BackgroundColor3 = Color3.fromRGB(0,0,0)
+searchBtn.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", searchBtn)
+
+-- SEARCH PANEL (BLUE)
+local searchFrame = Instance.new("Frame", gui)
+searchFrame.Size = UDim2.new(0,300,1,0)
+searchFrame.Position = UDim2.new(-1,0,0,0)
+searchFrame.BackgroundColor3 = Color3.fromRGB(0,120,255)
+Instance.new("UICorner", searchFrame)
+
+local searchBox = Instance.new("TextBox", searchFrame)
+searchBox.Size = UDim2.new(0.9,0,0,40)
+searchBox.Position = UDim2.new(0.05,0,0.05,0)
+searchBox.PlaceholderText = "Search..."
+searchBox.BackgroundColor3 = Color3.fromRGB(0,80,200)
+searchBox.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", searchBox)
+
+-- SCRIPTS
+local scripts = {
+    ["Dex explorer"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master/out.lua"))()',
+    ["Nameless admin"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()',
+    ["Aimbot"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-Script/main/Aimbot.lua"))()'
+}
+
+local y = 0.15
+for name, code in pairs(scripts) do
+    local btn = Instance.new("TextButton", searchFrame)
+    btn.Size = UDim2.new(0.9,0,0,40)
+    btn.Position = UDim2.new(0.05,0,y,0)
+    btn.Text = name
+    btn.BackgroundColor3 = Color3.fromRGB(0,90,220)
+    btn.TextColor3 = Color3.new(1,1,1)
+    Instance.new("UICorner", btn)
+
+    btn.MouseButton1Click:Connect(function()
+        box.Text = code
+    end)
+
+    y = y + 0.1
+end
+
+-- TWEENS
+local openTween = TweenService:Create(hub, TweenInfo.new(0.6), {
+    Position = UDim2.new(0.2,0,0.2,0)
+})
+local searchOpen = TweenService:Create(searchFrame, TweenInfo.new(0.5), {
+    Position = UDim2.new(0,0,0,0)
+})
+
+-- KEY CHECK
+submit.MouseButton1Click:Connect(function()
+	if keyBox.Text == KEY then
+		keyFrame:Destroy()
+		hub.Visible = true
+		burst()
+		openTween:Play()
+	else
+		keyBox.Text = "Wrong Key"
+	end
+end)
+
+-- BUTTONS
+searchBtn.MouseButton1Click:Connect(function()
+	searchOpen:Play()
+end)
+
+exec.MouseButton1Click:Connect(function()
+	pcall(function()
+		loadstring(box.Text)()
+	end)
+end)
+
+clear.MouseButton1Click:Connect(function()
+	box.Text = ""
+end)
