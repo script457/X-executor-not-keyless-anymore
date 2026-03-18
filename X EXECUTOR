@@ -1,0 +1,227 @@
+-- X EXECUTOR (KRNL STYLE RED ABOMINATION)
+
+local TweenService = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "Xexecutor"
+
+-- DRAGGABLE OPEN BUTTON
+local openBtn = Instance.new("TextButton", gui)
+openBtn.Size = UDim2.new(0,60,0,60)
+openBtn.Position = UDim2.new(0.5,-30,0,10)
+openBtn.Text = "X"
+openBtn.BackgroundColor3 = Color3.fromRGB(20,0,0)
+openBtn.TextColor3 = Color3.fromRGB(255,60,60)
+openBtn.TextScaled = true
+openBtn.BorderSizePixel = 0
+Instance.new("UICorner", openBtn).CornerRadius = UDim.new(1,0)
+
+-- MAIN HUB
+local hub = Instance.new("Frame", gui)
+hub.Size = UDim2.new(0.6,0,0.6,0)
+hub.Position = UDim2.new(0.2,0,1,400)
+hub.BackgroundColor3 = Color3.fromRGB(15,0,0)
+hub.BorderSizePixel = 0
+Instance.new("UICorner", hub).CornerRadius = UDim.new(0,12)
+
+local stroke = Instance.new("UIStroke", hub)
+stroke.Color = Color3.fromRGB(255,0,0)
+
+-- SIDEBAR
+local sidebar = Instance.new("Frame", hub)
+sidebar.Size = UDim2.new(0.25,0,1,0)
+sidebar.BackgroundColor3 = Color3.fromRGB(30,0,0)
+Instance.new("UICorner", sidebar).CornerRadius = UDim.new(0,12)
+
+local title = Instance.new("TextLabel", sidebar)
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "X executor"
+title.TextColor3 = Color3.fromRGB(255,80,80)
+title.BackgroundTransparency = 1
+title.TextScaled = true
+
+-- BUTTON CREATOR
+local function makeBtn(text, y)
+	local b = Instance.new("TextButton", sidebar)
+	b.Size = UDim2.new(0.9,0,0,40)
+	b.Position = UDim2.new(0.05,0,y,0)
+	b.Text = text
+	b.BackgroundColor3 = Color3.fromRGB(50,0,0)
+	b.TextColor3 = Color3.new(1,1,1)
+	Instance.new("UICorner", b)
+	return b
+end
+
+local execBtn = makeBtn("Execute", 0.2)
+local clearBtn = makeBtn("Clear", 0.3)
+local searchBtn = makeBtn("Scripts", 0.4)
+local closeBtn = makeBtn("Close", 0.5)
+
+-- EDITOR
+local editor = Instance.new("TextBox", hub)
+editor.Size = UDim2.new(0.7,0,0.75,0)
+editor.Position = UDim2.new(0.28,0,0.05,0)
+editor.Text = "print('hello world..')"
+editor.BackgroundColor3 = Color3.fromRGB(10,0,0)
+editor.TextColor3 = Color3.fromRGB(255,100,100)
+editor.TextXAlignment = Enum.TextXAlignment.Left
+editor.TextYAlignment = Enum.TextYAlignment.Top
+editor.MultiLine = true
+editor.ClearTextOnFocus = false
+Instance.new("UICorner", editor)
+
+-- BOTTOM BAR
+local bottom = Instance.new("Frame", hub)
+bottom.Size = UDim2.new(0.7,0,0.15,0)
+bottom.Position = UDim2.new(0.28,0,0.82,0)
+bottom.BackgroundColor3 = Color3.fromRGB(20,0,0)
+Instance.new("UICorner", bottom)
+
+-- PARTICLES
+local emitter = Instance.new("ParticleEmitter", hub)
+emitter.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+emitter.Rate = 0
+
+local function burst()
+	for i=1,3 do
+		emitter:Emit(40)
+		task.wait(0.05)
+	end
+end
+
+-- SEARCH PANEL
+local searchFrame = Instance.new("Frame", gui)
+searchFrame.Size = UDim2.new(0,300,1,0)
+searchFrame.Position = UDim2.new(-1,0,0,0)
+searchFrame.BackgroundColor3 = Color3.fromRGB(80,0,0)
+Instance.new("UICorner", searchFrame)
+
+local searchBox = Instance.new("TextBox", searchFrame)
+searchBox.Size = UDim2.new(0.9,0,0,40)
+searchBox.Position = UDim2.new(0.05,0,0.05,0)
+searchBox.PlaceholderText = "Search..."
+searchBox.BackgroundColor3 = Color3.fromRGB(120,0,0)
+searchBox.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", searchBox)
+
+-- SCRIPT LIST
+local scripts = {
+	["Dex explorer"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master/out.lua"))()',
+	["Nameless admin"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()',
+	["Aimbot"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-Script/main/Aimbot.lua"))()'
+}
+
+local y = 0.15
+local buttons = {}
+
+for name, code in pairs(scripts) do
+	local btn = Instance.new("TextButton", searchFrame)
+	btn.Size = UDim2.new(0.9,0,0,40)
+	btn.Position = UDim2.new(0.05,0,y,0)
+	btn.Text = name
+	btn.BackgroundColor3 = Color3.fromRGB(150,0,0)
+	btn.TextColor3 = Color3.new(1,1,1)
+	Instance.new("UICorner", btn)
+
+	btn.MouseButton1Click:Connect(function()
+		editor.Text = code
+	end)
+
+	buttons[name] = btn
+	y = y + 0.1
+end
+
+-- SEARCH FILTER
+searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+	local text = string.lower(searchBox.Text)
+	for name, btn in pairs(buttons) do
+		btn.Visible = string.find(string.lower(name), text) ~= nil
+	end
+end)
+
+-- TWEENS
+local openTween = TweenService:Create(hub, TweenInfo.new(0.6), {
+	Position = UDim2.new(0.2,0,0.2,0)
+})
+
+local closeTween = TweenService:Create(hub, TweenInfo.new(0.6), {
+	Position = UDim2.new(0.2,0,1,400)
+})
+
+local searchOpen = TweenService:Create(searchFrame, TweenInfo.new(0.5), {
+	Position = UDim2.new(0,0,0,0)
+})
+
+local searchClose = TweenService:Create(searchFrame, TweenInfo.new(0.5), {
+	Position = UDim2.new(-1,0,0,0)
+})
+
+-- BUTTON ACTIONS
+openBtn.MouseButton1Click:Connect(function()
+	burst()
+	openTween:Play()
+end)
+
+closeBtn.MouseButton1Click:Connect(function()
+	burst()
+	closeTween:Play()
+	searchClose:Play()
+end)
+
+local open = false
+searchBtn.MouseButton1Click:Connect(function()
+	if open then
+		searchClose:Play()
+	else
+		searchOpen:Play()
+	end
+	open = not open
+end)
+
+execBtn.MouseButton1Click:Connect(function()
+	pcall(function()
+		loadstring(editor.Text)()
+	end)
+end)
+
+clearBtn.MouseButton1Click:Connect(function()
+	editor.Text = ""
+end)
+
+-- DRAG ICON
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	openBtn.Position = UDim2.new(
+		startPos.X.Scale,
+		startPos.X.Offset + delta.X,
+		startPos.Y.Scale,
+		startPos.Y.Offset + delta.Y
+	)
+end
+
+openBtn.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = openBtn.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+openBtn.InputChanged:Connect(function(input)
+	dragInput = input
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
