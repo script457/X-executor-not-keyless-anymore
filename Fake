@@ -1,0 +1,235 @@
+-- X EXECUTOR (NEON + BLUE PANEL)
+
+local TweenService = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "Xexecutor"
+
+-- DRAGGABLE X BUTTON
+local openBtn = Instance.new("TextButton", gui)
+openBtn.Size = UDim2.new(0,60,0,60)
+openBtn.Position = UDim2.new(0.5,-30,0,10)
+openBtn.Text = "X"
+openBtn.BackgroundColor3 = Color3.fromRGB(0,0,0)
+openBtn.TextColor3 = Color3.fromRGB(0,255,255)
+openBtn.TextScaled = true
+openBtn.BorderSizePixel = 0
+Instance.new("UICorner", openBtn).CornerRadius = UDim.new(1,0)
+
+-- MAIN FRAME (NEON DARK)
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0.6,0,0.6,0)
+frame.Position = UDim2.new(0.2,0,1,400)
+frame.BackgroundColor3 = Color3.fromRGB(10,10,10)
+frame.BorderSizePixel = 0
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0,20)
+
+-- GLOW EFFECT
+local stroke = Instance.new("UIStroke", frame)
+stroke.Color = Color3.fromRGB(0,255,255)
+stroke.Thickness = 2
+
+-- TITLE
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "X executor"
+title.TextColor3 = Color3.fromRGB(0,255,255)
+title.BackgroundTransparency = 1
+title.TextScaled = true
+
+-- PARTICLES
+local emitter = Instance.new("ParticleEmitter", frame)
+emitter.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+emitter.Speed = NumberRange.new(6,10)
+emitter.Lifetime = NumberRange.new(0.4,0.8)
+emitter.Rate = 0
+
+local function burst()
+	for i=1,4 do
+		emitter:Emit(50)
+		task.wait(0.05)
+	end
+end
+
+-- TEXTBOX
+local box = Instance.new("TextBox", frame)
+box.Size = UDim2.new(0.9,0,0.5,0)
+box.Position = UDim2.new(0.05,0,0.15,0)
+box.Text = "print('hello world..')"
+box.BackgroundColor3 = Color3.fromRGB(20,20,20)
+box.TextColor3 = Color3.fromRGB(0,255,255)
+box.MultiLine = true
+box.TextWrapped = true
+box.ClearTextOnFocus = false
+Instance.new("UICorner", box).CornerRadius = UDim.new(0,12)
+
+-- EXECUTE
+local exec = Instance.new("TextButton", frame)
+exec.Size = UDim2.new(0.4,0,0,45)
+exec.Position = UDim2.new(0.05,0,0.68,0)
+exec.Text = "Execute"
+exec.BackgroundColor3 = Color3.fromRGB(0,0,0)
+exec.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", exec)
+
+-- CLEAR
+local clear = Instance.new("TextButton", frame)
+clear.Size = UDim2.new(0.4,0,0,45)
+clear.Position = UDim2.new(0.55,0,0.68,0)
+clear.Text = "Clear"
+clear.BackgroundColor3 = Color3.fromRGB(0,0,0)
+clear.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", clear)
+
+-- SEARCH BUTTON
+local searchBtn = Instance.new("TextButton", frame)
+searchBtn.Size = UDim2.new(0.9,0,0,40)
+searchBtn.Position = UDim2.new(0.05,0,0.85,0)
+searchBtn.Text = "Search Scripts"
+searchBtn.BackgroundColor3 = Color3.fromRGB(0,0,0)
+searchBtn.TextColor3 = Color3.fromRGB(0,255,255)
+Instance.new("UICorner", searchBtn)
+
+-- CLOSE
+local close = Instance.new("TextButton", frame)
+close.Size = UDim2.new(0,35,0,35)
+close.Position = UDim2.new(1,-45,0,5)
+close.Text = "X"
+close.BackgroundColor3 = Color3.fromRGB(0,0,0)
+close.TextColor3 = Color3.fromRGB(255,50,50)
+Instance.new("UICorner", close).CornerRadius = UDim.new(1,0)
+
+-- BLUE SEARCH PANEL
+local searchFrame = Instance.new("Frame", gui)
+searchFrame.Size = UDim2.new(0,300,1,0)
+searchFrame.Position = UDim2.new(-1,0,0,0)
+searchFrame.BackgroundColor3 = Color3.fromRGB(0,120,255)
+Instance.new("UICorner", searchFrame)
+
+-- SEARCH BOX
+local searchBox = Instance.new("TextBox", searchFrame)
+searchBox.Size = UDim2.new(0.9,0,0,40)
+searchBox.Position = UDim2.new(0.05,0,0.05,0)
+searchBox.PlaceholderText = "Search..."
+searchBox.BackgroundColor3 = Color3.fromRGB(0,80,200)
+searchBox.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", searchBox)
+
+-- SCRIPT LIST (UPDATED)
+local scripts = {
+    ["Dex explorer"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/peyton2465/Dex/master/out.lua"))()',
+    ["Nameless admin"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()',
+    ["Aimbot"] = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-Script/main/Aimbot.lua"))()'
+}
+
+local buttons = {}
+local y = 0.15
+
+for name, code in pairs(scripts) do
+    local btn = Instance.new("TextButton", searchFrame)
+    btn.Size = UDim2.new(0.9,0,0,40)
+    btn.Position = UDim2.new(0.05,0,y,0)
+    btn.Text = name
+    btn.BackgroundColor3 = Color3.fromRGB(0,90,220)
+    btn.TextColor3 = Color3.new(1,1,1)
+    Instance.new("UICorner", btn)
+
+    btn.MouseButton1Click:Connect(function()
+        box.Text = code
+    end)
+
+    buttons[name] = btn
+    y = y + 0.1
+end
+
+-- SEARCH FILTER
+searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+    local text = string.lower(searchBox.Text)
+    for name, btn in pairs(buttons) do
+        btn.Visible = string.find(string.lower(name), text) ~= nil
+    end
+end)
+
+-- TWEENS
+local openTween = TweenService:Create(frame, TweenInfo.new(0.6), {
+    Position = UDim2.new(0.2,0,0.2,0)
+})
+local closeTween = TweenService:Create(frame, TweenInfo.new(0.6), {
+    Position = UDim2.new(0.2,0,1,400)
+})
+local searchOpen = TweenService:Create(searchFrame, TweenInfo.new(0.5), {
+    Position = UDim2.new(0,0,0,0)
+})
+local searchClose = TweenService:Create(searchFrame, TweenInfo.new(0.5), {
+    Position = UDim2.new(-1,0,0,0)
+})
+
+-- BUTTONS
+openBtn.MouseButton1Click:Connect(function()
+    burst()
+    openTween:Play()
+end)
+
+close.MouseButton1Click:Connect(function()
+    burst()
+    closeTween:Play()
+    searchClose:Play()
+end)
+
+local opened = false
+searchBtn.MouseButton1Click:Connect(function()
+    if opened then
+        searchClose:Play()
+    else
+        searchOpen:Play()
+    end
+    opened = not opened
+end)
+
+exec.MouseButton1Click:Connect(function()
+    pcall(function()
+        loadstring(box.Text)()
+    end)
+end)
+
+clear.MouseButton1Click:Connect(function()
+    box.Text = ""
+end)
+
+-- DRAG ICON ONLY
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+    local delta = input.Position - dragStart
+    openBtn.Position = UDim2.new(
+        startPos.X.Scale,
+        startPos.X.Offset + delta.X,
+        startPos.Y.Scale,
+        startPos.Y.Offset + delta.Y
+    )
+end
+
+openBtn.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = openBtn.Position
+
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+openBtn.InputChanged:Connect(function(input)
+    dragInput = input
+end)
+
+UIS.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
