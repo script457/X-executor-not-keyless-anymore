@@ -1,0 +1,270 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+
+designed using localmaze gui creator
+]=]
+
+-- Instances: 21 | Scripts: 5 | Modules: 0 | Tags: 0
+local LMG2L = {};
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui
+LMG2L["ScreenGui_1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+LMG2L["ScreenGui_1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame1
+LMG2L["Frame1_2"] = Instance.new("TextButton", LMG2L["ScreenGui_1"]);
+LMG2L["Frame1_2"]["TextWrapped"] = true;
+LMG2L["Frame1_2"]["BorderSizePixel"] = 0;
+LMG2L["Frame1_2"]["TextScaled"] = true;
+LMG2L["Frame1_2"]["TextColor3"] = Color3.fromRGB(14, 2, 255);
+LMG2L["Frame1_2"]["BackgroundColor3"] = Color3.fromRGB(9, 9, 9);
+LMG2L["Frame1_2"]["Size"] = UDim2.new(0.08091, 0, 0.1915, 0);
+LMG2L["Frame1_2"]["Text"] = [[N]];
+LMG2L["Frame1_2"]["Name"] = [[Frame1]];
+LMG2L["Frame1_2"]["Position"] = UDim2.new(0.01618, 0, 0, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame1.UICorner
+LMG2L["UICorner_3"] = Instance.new("UICorner", LMG2L["Frame1_2"]);
+LMG2L["UICorner_3"]["CornerRadius"] = UDim.new(0, 100);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame1.LocalScript
+LMG2L["LocalScript_4"] = Instance.new("LocalScript", LMG2L["Frame1_2"]);
+
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame1.UIAspectRatioConstraint
+LMG2L["UIAspectRatioConstraint_5"] = Instance.new("UIAspectRatioConstraint", LMG2L["Frame1_2"]);
+
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame
+LMG2L["Frame_6"] = Instance.new("Frame", LMG2L["ScreenGui_1"]);
+LMG2L["Frame_6"]["BorderSizePixel"] = 0;
+LMG2L["Frame_6"]["BackgroundColor3"] = Color3.fromRGB(4, 83, 90);
+LMG2L["Frame_6"]["Size"] = UDim2.new(0.36756, 0, 0.55262, 0);
+LMG2L["Frame_6"]["Position"] = UDim2.new(0.32363, 0, 0.1149, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox
+LMG2L["TextBox_7"] = Instance.new("TextBox", LMG2L["Frame_6"]);
+LMG2L["TextBox_7"]["BorderSizePixel"] = 0;
+LMG2L["TextBox_7"]["TextWrapped"] = true;
+LMG2L["TextBox_7"]["TextSize"] = 13;
+LMG2L["TextBox_7"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextBox_7"]["BackgroundColor3"] = Color3.fromRGB(14, 2, 255);
+LMG2L["TextBox_7"]["Size"] = UDim2.new(1, 0, 0.55446, 0);
+LMG2L["TextBox_7"]["Text"] = [[verify it's you tantan pogi]];
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox.LocalScript
+LMG2L["LocalScript_8"] = Instance.new("LocalScript", LMG2L["TextBox_7"]);
+
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox.TextLabel
+LMG2L["TextLabel_9"] = Instance.new("TextLabel", LMG2L["TextBox_7"]);
+LMG2L["TextLabel_9"]["Active"] = true;
+LMG2L["TextLabel_9"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_9"]["BackgroundColor3"] = Color3.fromRGB(6, 218, 255);
+LMG2L["TextLabel_9"]["TextColor3"] = Color3.fromRGB(2, 3, 3);
+LMG2L["TextLabel_9"]["Size"] = UDim2.new(0.45283, 0, 0.30357, 0);
+LMG2L["TextLabel_9"]["Text"] = [[password?]];
+LMG2L["TextLabel_9"]["Position"] = UDim2.new(0.26415, 0, 1.17857, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox.TextButton
+LMG2L["TextButton_a"] = Instance.new("TextButton", LMG2L["TextBox_7"]);
+LMG2L["TextButton_a"]["BorderSizePixel"] = 0;
+LMG2L["TextButton_a"]["TextColor3"] = Color3.fromRGB(4, 6, 7);
+LMG2L["TextButton_a"]["BackgroundColor3"] = Color3.fromRGB(8, 236, 255);
+LMG2L["TextButton_a"]["Size"] = UDim2.new(0.45283, 0, 0.26786, 0);
+LMG2L["TextButton_a"]["Text"] = [[forgot password]];
+LMG2L["TextButton_a"]["Position"] = UDim2.new(0.26415, 0, 1.51786, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox.TextButton.LocalScript
+LMG2L["LocalScript_b"] = Instance.new("LocalScript", LMG2L["TextButton_a"]);
+
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.UIAspectRatioConstraint
+LMG2L["UIAspectRatioConstraint_c"] = Instance.new("UIAspectRatioConstraint", LMG2L["Frame_6"]);
+LMG2L["UIAspectRatioConstraint_c"]["AspectRatio"] = 1.57426;
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2
+LMG2L["Frame2_d"] = Instance.new("Frame", LMG2L["ScreenGui_1"]);
+LMG2L["Frame2_d"]["BorderSizePixel"] = 0;
+LMG2L["Frame2_d"]["BackgroundColor3"] = Color3.fromRGB(10, 15, 208);
+LMG2L["Frame2_d"]["Size"] = UDim2.new(0.71431, 0, 0.89733, 0);
+LMG2L["Frame2_d"]["Position"] = UDim2.new(0.15719, 0, 0.12584, 0);
+LMG2L["Frame2_d"]["Name"] = [[Frame2]];
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextButton2
+LMG2L["TextButton2_e"] = Instance.new("TextButton", LMG2L["Frame2_d"]);
+LMG2L["TextButton2_e"]["TextWrapped"] = true;
+LMG2L["TextButton2_e"]["BorderSizePixel"] = 0;
+LMG2L["TextButton2_e"]["TextScaled"] = true;
+LMG2L["TextButton2_e"]["TextColor3"] = Color3.fromRGB(4, 5, 6);
+LMG2L["TextButton2_e"]["BackgroundColor3"] = Color3.fromRGB(40, 255, 35);
+LMG2L["TextButton2_e"]["Size"] = UDim2.new(0.31715, 0, 0.2622, 0);
+LMG2L["TextButton2_e"]["Text"] = [[CLEAR]];
+LMG2L["TextButton2_e"]["Name"] = [[TextButton2]];
+LMG2L["TextButton2_e"]["Position"] = UDim2.new(0.49838, 0, 0.7622, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextButton2.LocalScript
+LMG2L["LocalScript_f"] = Instance.new("LocalScript", LMG2L["TextButton2_e"]);
+
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextBox
+LMG2L["TextBox_10"] = Instance.new("TextBox", LMG2L["Frame2_d"]);
+LMG2L["TextBox_10"]["BorderSizePixel"] = 0;
+LMG2L["TextBox_10"]["BackgroundColor3"] = Color3.fromRGB(80, 255, 208);
+LMG2L["TextBox_10"]["Size"] = UDim2.new(0.7767, 0, 0.40244, 0);
+LMG2L["TextBox_10"]["Position"] = UDim2.new(0.11327, 0, 0.32317, 0);
+LMG2L["TextBox_10"]["Text"] = [[PUT SCRIPT HERE BYPASSED AND EVERYTHING WORKS]];
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextButton
+LMG2L["TextButton_11"] = Instance.new("TextButton", LMG2L["Frame2_d"]);
+LMG2L["TextButton_11"]["TextWrapped"] = true;
+LMG2L["TextButton_11"]["BorderSizePixel"] = 0;
+LMG2L["TextButton_11"]["TextScaled"] = true;
+LMG2L["TextButton_11"]["TextColor3"] = Color3.fromRGB(3, 4, 5);
+LMG2L["TextButton_11"]["BackgroundColor3"] = Color3.fromRGB(63, 255, 19);
+LMG2L["TextButton_11"]["Size"] = UDim2.new(0.31068, 0, 0.2378, 0);
+LMG2L["TextButton_11"]["Text"] = [[EXECUTE]];
+LMG2L["TextButton_11"]["Position"] = UDim2.new(0.16181, 0, 0.7622, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextButton.LocalScript
+LMG2L["LocalScript_12"] = Instance.new("LocalScript", LMG2L["TextButton_11"]);
+
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.Frame
+LMG2L["Frame_13"] = Instance.new("Frame", LMG2L["Frame2_d"]);
+LMG2L["Frame_13"]["BorderSizePixel"] = 0;
+LMG2L["Frame_13"]["BackgroundColor3"] = Color3.fromRGB(8, 242, 255);
+LMG2L["Frame_13"]["Size"] = UDim2.new(0.92233, 0, 0.26829, 0);
+LMG2L["Frame_13"]["Position"] = UDim2.new(0.06149, 0, 0, 0);
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.Frame.TextLabel
+LMG2L["TextLabel_14"] = Instance.new("TextLabel", LMG2L["Frame_13"]);
+LMG2L["TextLabel_14"]["TextWrapped"] = true;
+LMG2L["TextLabel_14"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_14"]["TextScaled"] = true;
+LMG2L["TextLabel_14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_14"]["TextColor3"] = Color3.fromRGB(6, 8, 10);
+LMG2L["TextLabel_14"]["BackgroundTransparency"] = 100;
+LMG2L["TextLabel_14"]["Size"] = UDim2.new(1, 0, 1.06818, 0);
+LMG2L["TextLabel_14"]["Text"] = [[NICOLAS EXECUTER]];
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.UIAspectRatioConstraint
+LMG2L["UIAspectRatioConstraint_15"] = Instance.new("UIAspectRatioConstraint", LMG2L["Frame2_d"]);
+LMG2L["UIAspectRatioConstraint_15"]["AspectRatio"] = 1.88415;
+
+
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame1.LocalScript
+local function C_4()
+	local script = LMG2L["LocalScript_4"];
+	local button = script.Parent -- Frame1 TextButton	
+	local screenGui = button:FindFirstAncestorOfClass("ScreenGui")	
+	local frame2 = screenGui:WaitForChild("Frame2") -- waits until Frame2 exists	
+	
+	-- Start hidden	
+	frame2.Visible = false	
+	frame2.ZIndex = 10	
+	
+	button.MouseButton1Click:Connect(function()	
+	    frame2.Visible = not frame2.Visible	
+	    if frame2.Visible then	
+	        frame2:BringToFront() -- make sure it’s on top of other UI	
+	    end	
+	end)	
+end;
+task.spawn(C_4);
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox.LocalScript
+local function C_8()
+	local script = LMG2L["LocalScript_8"];
+	local textbox = script.Parent	
+	local correctPassword = "tantanpogi" -- CHANGE THIS	
+	
+	local lockFrame = textbox.Parent	
+	local openFrame = lockFrame.Parent:WaitForChild("Frame1")	
+	
+	-- hide the open frame at start	
+	openFrame.Visible = false	
+	
+	textbox.FocusLost:Connect(function(enterPressed)	
+		if enterPressed then	
+			if textbox.Text == correctPassword then	
+				-- correct password	
+				lockFrame:Destroy()	
+				openFrame.Visible = true	
+			else	
+				-- wrong password	
+				textbox.Text = ""	
+				textbox.PlaceholderText = "Wrong pass"	
+			end	
+		end	
+	end)	
+end;
+task.spawn(C_8);
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame.TextBox.TextButton.LocalScript
+local function C_b()
+	local script = LMG2L["LocalScript_b"];
+	local forgotButton = script.Parent	
+	local screenGui = forgotButton:FindFirstAncestorOfClass("ScreenGui")	
+	
+	forgotButton.MouseButton1Click:Connect(function()	
+		for _, obj in pairs(screenGui:GetChildren()) do	
+			if obj:IsA("GuiObject") then	
+				obj:Destroy()	
+			end	
+		end	
+	end)	
+end;
+task.spawn(C_b);
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextButton2.LocalScript
+local function C_f()
+	local script = LMG2L["LocalScript_f"];
+	-- CLEAR (button)	
+	local button = script.Parent	
+	local textBox = button.Parent:WaitForChild("TextBox")	
+	button.MouseButton1Click:Connect(function()	
+	textBox.Text = ""	
+	end)	
+end;
+task.spawn(C_f);
+-- Players.hello_itsme5523.PlayerGui.ScreenGui.Frame2.TextButton.LocalScript
+local function C_12()
+	local script = LMG2L["LocalScript_12"];
+	-- EXECUTE (button)	
+	local button = script.Parent	
+	local textBox = button.Parent:WaitForChild("TextBox")	
+	button.MouseButton1Click:Connect(function()	
+	local code = textBox.Text	
+	if code ~= "" then	
+	pcall(function()	
+	loadstring(code)()	
+	end)	
+	end	
+	end)	
+end;
+task.spawn(C_12);
+
+return LMG2L["ScreenGui_1"], require;
